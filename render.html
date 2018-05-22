@@ -84,6 +84,13 @@
                     <br>
                     <span ng-if="invoice.details.notes">{{invoice.details.notes}}</span>
                 </td>
-            </tr>        
+            </tr>
+            <tr class="details" ng-if="invoice.details.paymentLink">
+                <td>
+                    <strong>Visa/Mastercard Payment Link</strong>
+                    <br>
+                    <b> <a href="{{invoice.details.paymentLink}}">{{invoice.details.paymentLink}}</a></b>
+                </td>
+            </tr>                            
         </table>
 </div>
