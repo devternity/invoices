@@ -1,6 +1,5 @@
 angular.module('app', ['ngRoute'])
-  .service('Invoice', function($q, $http) {
-      var self = this;
+  .service('Invoice', function($http) {
       this.fetch = function (invoiceUUID) {
         return $http
           .get("https://devternity-22e74.firebaseio.com/invoices/" + invoiceUUID + ".json")
