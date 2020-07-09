@@ -20,6 +20,7 @@
     }
 
     .invoice-box {
+        position: relative;
         max-width: 800px;
         margin: auto;
         padding: 30px;
@@ -33,6 +34,13 @@
         background-color: #fff;
     }
     
+    .invoice-box #print {
+        visibility: hidden;
+        position: absolute;
+        left: 15px;
+        top: 15px;
+    }
+
     .invoice-box table {
         width: 100%;
         line-height: inherit;
@@ -86,6 +94,12 @@
         font-weight: bold;
     }
     
+    @media only screen {
+        .invoice-box #print {
+            visibility: visible;
+        }
+    }
+
     @media only screen and (max-width: 600px) {
         .invoice-box table tr.top table td {
             width: 100%;
