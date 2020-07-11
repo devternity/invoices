@@ -3,8 +3,12 @@ angular.module('app', ['ngRoute'])
       this.fetch = function (invoiceUUID) {
         return $http
           .get("https://devternity-22e74.firebaseio.com/invoices/" + invoiceUUID + ".json")
-          .then(function(it) { 
-            return it.data;
+          .then(function(it) {
+            const data = it.data;
+            if (data.paymentMethod === 'VISA') {
+              data.paymentLink = 'https://api.devternity.com/invoice/' + invoiceUUID + '/linkpay'
+            }
+            return data;
           });
       };
 })
