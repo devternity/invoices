@@ -32,13 +32,13 @@
                             
                             <td>
                                 <strong>Issued By</strong><br>
-                                DevTernity OÜ<br>
-                                Registration number: 14226860<br>
-                                VAT: EE101974721<br>                                
-                                Mõisavahe 38-129 Tartu, Estonia<br><br>
+                                {{invoice.details.billTo.name}}<br>
+                                Registration number: {{invoice.details.billTo.regNo}}<br>
+                                VAT number: {{invoice.details.billTo.vatNo}}<br>                                
+                                {{invoice.details.billTo.address}}<br><br>
                                 <strong>Bank Transfer Details</strong><br>
                                 LHV Pank<br>
-                                IBAN: EE757700771002512472<br>
+                                IBAN: {{invoice.details.billTo.iban}}<br>
                                 SWIFT: LHVBEE22
                             </td>
                         </tr>
