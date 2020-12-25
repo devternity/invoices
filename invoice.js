@@ -6,7 +6,7 @@ angular.module('app', ['ngRoute'])
           .then(function(it) {
             const data = it.data;
             if (data.paymentMethod === 'VISA') {
-              data.paymentLink = 'https://api2.devternity.com/invoice/' + invoiceUUID + '/linkpay'
+              data.paymentLink = 'https://devternity.glitch.me/invoice/' + invoiceUUID + '/linkpay'
             }
             if (data.billTo === 'devcapital') {
               data.billTo = {};
