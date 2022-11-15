@@ -18,7 +18,7 @@ angular.module('app', ['ngRoute'])
               data.billTo.name = 'DevTernity OÜ';
               data.billTo.regNo = '14226860'
               data.billTo.vatNo = 'EE101974721'
-              data.billTo.address = 'Mõisavahe 38-129 Tartu, Estonia';
+              data.billTo.address = 'Mõisavahe 38-129 Tartu, Estonia, 50708';
               data.billTo.iban = 'EE757700771002512472';
             }
             return data;
