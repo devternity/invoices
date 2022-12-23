@@ -5,7 +5,7 @@ angular.module('app', ['ngRoute'])
           .get("https://devternity-22e74.firebaseio.com/invoices/" + invoiceUUID + ".json")
           .then(function(it) {
             const data = it.data;
-            data.paymentLink = data.paymentLink || 'https://api.devternity.com/checkout/' + invoiceUUID
+            data.invoiceUUID = invoiceUUID;
             if (data.billTo === 'devcapital') {
               data.billTo = {};
               data.billTo.name = 'DevCapital OÜ';

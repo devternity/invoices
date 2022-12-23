@@ -90,11 +90,11 @@
                     <span>{{invoice.details.notes}}</span>
                 </td>
             </tr>
-            <tr class="details" ng-if="invoice.details.paymentLink">
+            <tr class="details">
                 <td>
                     <strong>💳 Pay with Visa/Mastercard/Amex:</strong>
                     <br>
-                    <b> <a href="{{invoice.details.paymentLink}}">{{invoice.details.paymentLink}}</a></b>
+                    <b> <a href="https://api.devternity.com/checkout/{{invoice.details.invoiceUUID}}">https://api.devternity.com/checkout/{{invoice.details.invoiceUUID}}</a></b>
                 </td>
             </tr>                            
         </table>
