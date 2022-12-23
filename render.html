@@ -83,15 +83,16 @@
             <tr class="details">
                 <td>
                     <strong>Notes</strong>
+                    <b ng-if="invoice.details.po"><br>📒 PO number {{invoice.details.po}}</b>
                     <br>
-                    Please provide Invoice ID in the payment description.
+                    When making payment, please provide Invoice ID <b>{{invoice.details.no}}</b> in the description.
                     <br>
-                    <span ng-if="invoice.details.notes">{{invoice.details.notes}}</span>
+                    <span>{{invoice.details.notes}}</span>
                 </td>
             </tr>
             <tr class="details" ng-if="invoice.details.paymentLink">
                 <td>
-                    <strong>Pay with Visa/Mastercard:</strong>
+                    <strong>💳 Pay with Visa/Mastercard/Amex:</strong>
                     <br>
                     <b> <a href="{{invoice.details.paymentLink}}">{{invoice.details.paymentLink}}</a></b>
                 </td>
