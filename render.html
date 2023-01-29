@@ -62,7 +62,7 @@
                 </td>
                 
                 <td>
-                    € {{order.amount}}
+                    {{invoice.currencyChar}} {{order.amount}}
                 </td>
             </tr>
             
@@ -72,10 +72,10 @@
                     Ei ole käibemaksukohustuslane
                 </td>
                 <td ng-if="invoice.details.billTo.vatNo !== '-'">
-                    Subtotal: € {{invoice.details.subtotal}}<br>
-                    <span ng-if="invoice.details.discount">Discount: € {{invoice.details.discount}}<br></span>
-                    VAT{{invoice.details.vatRate ? (" " + invoice.details.vatRate + "%: €" + invoice.details.vat) : ": reverse charge"}}<br>
-                    Total: € {{invoice.details.total}}
+                    Subtotal: {{invoice.currencyChar}} {{invoice.details.subtotal}}<br>
+                    <span ng-if="invoice.details.discount">Discount: {{invoice.currencyChar}} {{invoice.details.discount}}<br></span>
+                    VAT{{invoice.details.vatRate ? (" " + invoice.details.vatRate + "%: " + invoice.currencyChar  + invoice.details.vat) : ": reverse charge"}}<br>
+                    Total: {{invoice.currencyChar}} {{invoice.details.total}}
                 </td>
             </tr>
         </table>

@@ -61,4 +61,6 @@ angular.module('app', ['ngRoute'])
     this.issued = moment(invoice.issued).format("MMMM DD, YYYY");
     this.due = moment(invoice.issued).add(invoice.dueDays, 'days').format("MMMM DD, YYYY");
     this.details = invoice;
+    this.currencyChar = invoice.currencyChar || "€" 
+    this.currency = invoice.currency || "EUR" 
 });
