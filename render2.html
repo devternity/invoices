@@ -69,8 +69,8 @@
                 Subtotal: {{invoice.currencyChar}} {{invoice.details.subtotal}}<br />
                 <span ng-if="invoice.details.discount">Discount: {{invoice.currencyChar}}
                     {{invoice.details.discount}}<br /></span>
-                {{invoice.details.vatNo !== '-' ? "VAT: reverse charge" : ("VAT " + invoice.details.vatRate +
-                "%: " + invoice.currencyChar + invoice.details.vat)}}<br />
+                {{(invoice.details.vatRate > 0 || invoice.details.vatNo === '-') ? ("VAT " + invoice.details.vatRate +
+                "%: " + invoice.currencyChar + invoice.details.vat) : "VAT: reverse charge"}}<br />
                 Total: {{invoice.currencyChar}} {{invoice.details.total}}
             </td>
         </tr>

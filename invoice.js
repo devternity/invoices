@@ -46,7 +46,7 @@ angular.module('app', ['ngRoute'])
       })
       .when('/:invoiceUUID', {
         controller: 'ViewInvoice as invoice',
-        templateUrl: 'renderz.html',
+        templateUrl: 'render2.html',
         resolve: fetchInvoice
       })
       .otherwise({
