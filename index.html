@@ -13,7 +13,7 @@
     <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
-    <script src="invoice.js?v3"></script>
+    <script src="invoice.js?v4"></script>
     <style>
         body {
             background-color: #FBFDFE
@@ -57,18 +57,10 @@
             min-width: 130px;
         }
 
-        .invoice-box table tr.top table td {
-            padding-bottom: 20px;
-        }
-
         .invoice-box table tr.top table td.title {
             font-size: 45px;
             line-height: 45px;
             color: #333;
-        }
-
-        .invoice-box table tr.information table td {
-            padding-bottom: 40px;
         }
 
         .invoice-box table tr.heading td {
@@ -89,7 +81,8 @@
             border-bottom: none;
         }
 
-        .invoice-box table tr.total td:nth-child(2) {
+        .invoice-box table tr.total td {
+            text-align: right;
             border-top: 2px solid #eee;
             font-weight: bold;
         }

@@ -61,11 +61,10 @@
         </tr>
 
         <tr class="total">
-            <td></td>
-            <td ng-if="invoice.details.billTo.vatNo === '-'">
+            <td ng-if="invoice.details.billTo.vatNo === '-'" colspan="2">
                 Ei ole käibemaksukohustuslane
             </td>
-            <td ng-if="invoice.details.billTo.vatNo !== '-'">
+            <td ng-if="invoice.details.billTo.vatNo !== '-'" colspan="2">
                 Subtotal: {{invoice.currencyChar}} {{invoice.details.subtotal}}<br />
                 <span ng-if="invoice.details.discount">Discount: {{invoice.currencyChar}}
                     {{invoice.details.discount}}<br /></span>
