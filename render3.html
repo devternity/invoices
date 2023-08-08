@@ -38,10 +38,10 @@
                             Registration number: {{invoice.details.billTo.regNo}}<br />
                             VAT number: {{invoice.details.billTo.vatNo}}<br />
                             {{invoice.details.billTo.address}}<br /><br />
-                            <strong>Bank Transfer Details</strong><br />
-                            AS LHV Pank<br />
+                            <strong>Bank Transfer Details {{invoice.details.billTo.transferHint}}</strong><br />
+                            Bank: {{invoice.details.billTo.bank}}<br />
                             IBAN: {{invoice.details.billTo.iban}}<br />
-                            SWIFT: LHVBEE22
+                            SWIFT/BIC: {{invoice.details.billTo.swift}}
                         </td>
                     </tr>
                 </table>

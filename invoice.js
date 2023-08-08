@@ -13,13 +13,28 @@ angular.module('app', ['ngRoute'])
             data.billTo.vatNo = '-';
             data.billTo.address = 'J. Koorti tn 16-20 Tallinn, Estonia';
             data.billTo.iban = 'EE497700771004301717';
+            data.billTo.swift = 'LHVBEE22'
+            data.billTo.bank = 'AS LHV Pank'
           } else {
             data.billTo = {};
             data.billTo.name = 'DevTernity OÜ';
             data.billTo.regNo = '14226860'
             data.billTo.vatNo = 'EE101974721'
             data.billTo.address = 'Mõisavahe 38-129 Tartu, Estonia, 50708';
-            data.billTo.iban = 'EE757700771002512472';
+
+            const greylistCountries = ['Serbia', 'Croatia', 'Armenia', 'Egypt', 'Gibraltar', 'Turkey']
+            const isGreylistedCountry = greylistCountries.some(country => data.address.trim().endsWith(country))
+            if (isGreylistedCountry) {
+              data.billTo.iban = 'BE46967064735136';
+              data.billTo.swift = 'TRWIBEB1XXX'
+              data.billTo.bank = 'Wise Europe S.A'
+              data.billTo.transferHint = '(EUR payments only)'
+            } else {
+              data.billTo.iban = 'EE757700771002512472';
+              data.billTo.swift = 'LHVBEE22'
+              data.billTo.bank = 'AS LHV Pank'
+            }
+
           }
           return data;
         });
@@ -46,7 +61,7 @@ angular.module('app', ['ngRoute'])
       })
       .when('/:invoiceUUID', {
         controller: 'ViewInvoice as invoice',
-        templateUrl: 'render2.html',
+        templateUrl: 'render3.html',
         resolve: fetchInvoice
       })
       .otherwise({
