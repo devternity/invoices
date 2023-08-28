@@ -22,7 +22,7 @@ angular.module('app', ['ngRoute'])
             data.billTo.vatNo = 'EE101974721'
             data.billTo.address = 'Mõisavahe 38-129 Tartu, Estonia, 50708';
 
-            const greylistCountries = ['Serbia', 'Croatia', 'Armenia', 'Saudi Arabia', 'Egypt', 'Gibraltar', 'Turkey']
+            const greylistCountries = ['Serbia', 'Croatia', 'Armenia', 'Saudi Arabia', 'Armenia', 'Kazakhstan', 'Uzbekistan', 'UAE', 'United Arab Emirates', 'Egypt', 'Gibraltar', 'Turkey']
             const isGreylistedCountry = greylistCountries.some(country => data.address.trim().endsWith(country))
             if (isGreylistedCountry) {
               data.billTo.iban = 'BE46967064735136';
