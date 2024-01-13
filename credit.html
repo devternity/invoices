@@ -1,0 +1,86 @@
+<div class="invoice-box">
+    <button id="print" onclick="window.print()">Print</button>
+    <table cellpadding="0" cellspacing="0">
+        <tr class="top">
+            <td colspan="2">
+                <table>
+                    <tr>
+                        <td class="title">
+                            <a href="https://devternity.com"><img
+                                    src="https://res.cloudinary.com/eduardsi/image/upload/c_scale,h_200/v1513458004/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50IjoyOTM1MTYwLCJidWNrZXQiOiJ1cGxvYWRzIiwia2V5IjoiJ2RvY3MtJy0yOTM1MTYwL3VwbG9hZC1kZGIwMjcyMDYyMDllYmE3ODQyYzIyNmIyNzlhZTVhM2E0ZTk2YjI0IiwiZmlsZW5hbWUiOiJ_nottdy.png"
+                                    style="width: 30%; max-width: 300px" /></a>
+                        </td>
+
+                        <td>
+                            <h3>Credit note: {{invoice.details.no}}-CREDIT</h3>
+                            Issued: {{invoice.credited}}<br />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr class="information">
+            <td colspan="2">
+                <table>
+                    <tr>
+                        <td>
+                            <strong>Billed To</strong><br />
+                            {{invoice.details.name}}<br />
+                            VAT number: {{invoice.details.vatNo}}<br />
+                            {{invoice.details.address}}
+                        </td>
+
+                        <td>
+                            <strong>Issued By</strong><br />
+                            {{invoice.details.billTo.name}}<br />
+                            Registration number: {{invoice.details.billTo.regNo}}<br />
+                            VAT number: {{invoice.details.billTo.vatNo}}<br />
+                            {{invoice.details.billTo.address}}<br /><br />
+                            <strong>Bank Transfer Details {{invoice.details.billTo.transferHint}}</strong><br />
+                            Bank: {{invoice.details.billTo.bank}}<br />
+                            IBAN: {{invoice.details.billTo.iban}}<br />
+                            SWIFT/BIC: {{invoice.details.billTo.swift}}
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr class="heading">
+            <td>Description</td>
+
+            <td>Price</td>
+        </tr>
+
+        <tr class="item" ng-repeat="order in invoice.details.orders" ng-class="{'last':$last}">
+            <td>{{order.name}}</td>
+
+            <td>-{{invoice.currencyChar}} {{order.amount}}</td>
+        </tr>
+
+        <tr class="total">
+            <td ng-if="invoice.details.billTo.vatNo === '-'" colspan="2">
+                Ei ole käibemaksukohustuslane
+            </td>
+            <td ng-if="invoice.details.billTo.vatNo !== '-'" colspan="2">
+                Subtotal: -{{invoice.currencyChar}} {{invoice.details.subtotal}}<br />
+                <span ng-if="invoice.details.discount">Discount: {{invoice.currencyChar}}
+                    {{invoice.details.discount}}<br /></span>
+                {{(invoice.details.vatRate > 0 || invoice.details.vatNo === '-') ? ("VAT " + invoice.details.vatRate +
+                "%: -" + invoice.currencyChar + invoice.details.vat) : "VAT: reverse charge"}}<br />
+                Total: -{{invoice.currencyChar}} {{invoice.details.total}}
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr class="details">
+            <td>
+                <strong>Notes</strong>
+                <b ng-if="invoice.details.po"><br />📒 PO number: {{invoice.details.po}}</b>
+                <br />
+                —
+            </td>
+        </tr>
+    </table>
+</div>

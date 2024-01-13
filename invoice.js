@@ -61,7 +61,15 @@ angular.module('app', ['ngRoute'])
       })
       .when('/:invoiceUUID', {
         controller: 'ViewInvoice as invoice',
-        templateUrl: 'render4.html',
+        templateUrl: 'debit.html',
+        resolve: fetchInvoice
+      })
+      .when('/:invoiceUUID/credit', {
+        redirectTo: '/:invoiceUUID/credit/' + new Date().toISOString().substring(0, 10)
+      })
+      .when('/:invoiceUUID/credit/:timestamp', {
+        controller: 'ViewInvoice as invoice',
+        templateUrl: 'credit.html',
         resolve: fetchInvoice
       })
       .otherwise({
@@ -74,8 +82,13 @@ angular.module('app', ['ngRoute'])
       return;
     }
     this.issued = moment(invoice.issued).format("MMMM DD, YYYY");
+    this.credited = moment($routeParams.timestamp).format("MMMM DD, YYYY")
     this.due = moment(invoice.issued).add(invoice.dueDays, 'days').format("MMMM DD, YYYY");
     this.details = invoice;
     this.currencyChar = invoice.currencyChar || "€"
     this.currency = invoice.currency || "EUR"
+
+    const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
+    const formattedDate = formatter.format(new Date());
+    this.date = formattedDate
   });
